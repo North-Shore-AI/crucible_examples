@@ -41,8 +41,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Request Hedging"
             description="Visualize tail latency reduction. See P99 improvements of 50-75% with minimal cost overhead."
             icon="⚡"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/hedging"}
           />
           
     <!-- Example 3: Statistics -->
@@ -68,8 +68,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Production Monitoring"
             description="30-day health tracking with automated degradation detection. Statistical alerts and retraining triggers."
             icon="📈"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/monitoring"}
           />
           
     <!-- Example 6: Optimization -->
