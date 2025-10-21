@@ -32,8 +32,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Ensemble Reliability"
             description="Watch 5 models vote on medical diagnoses. See how ensemble voting achieves 96-99% reliability vs 89-92% single model."
             icon="🎯"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/ensemble"}
           />
           
     <!-- Example 2: Hedging -->

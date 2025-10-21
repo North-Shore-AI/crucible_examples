@@ -18,6 +18,7 @@ defmodule CrucibleExamplesWeb.Router do
     pipe_through :browser
 
     live "/", HomeLive, :index
+    live "/ensemble", EnsembleLive, :index
   end
 
   # Other scopes may use custom stacks.
