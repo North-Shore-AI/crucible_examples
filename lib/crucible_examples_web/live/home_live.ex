@@ -50,8 +50,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Statistical Comparison"
             description="A/B test two models with proper statistical rigor. T-tests, effect sizes, and confidence intervals."
             icon="📊"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/stats"}
           />
           
     <!-- Example 4: Trace -->
@@ -59,8 +59,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Causal Trace Explorer"
             description="Interactive timeline of LLM reasoning. Explore alternatives, track uncertainty, search event history."
             icon="🔍"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/trace"}
           />
           
     <!-- Example 5: Monitoring -->
@@ -77,8 +77,8 @@ defmodule CrucibleExamplesWeb.HomeLive do
             title="Optimization Playground"
             description="Systematic parameter search with Bayesian optimization. Watch convergence in real-time."
             icon="🎛️"
-            status="Coming Soon"
-            route={nil}
+            status="Available"
+            route={~p"/optimization"}
           />
         </div>
         

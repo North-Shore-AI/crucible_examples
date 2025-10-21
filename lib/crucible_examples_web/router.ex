@@ -19,6 +19,11 @@ defmodule CrucibleExamplesWeb.Router do
 
     live "/", HomeLive, :index
     live "/ensemble", EnsembleLive, :index
+    live "/hedging", HedgingLive, :index
+    live "/stats", StatsLive, :index
+    live "/trace", TraceLive, :index
+    live "/optimization", OptimizationLive, :index
+    live "/monitoring", MonitoringLive, :index
   end
 
   # Other scopes may use custom stacks.
