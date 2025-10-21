@@ -66,11 +66,19 @@ defmodule CrucibleExamplesWeb.MonitoringLive do
             ← Back to Examples
           </.link>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Production Monitoring Dashboard
+            📈 Production Monitoring Dashboard
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             Continuous model health tracking with statistical degradation detection
           </p>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Monitor production model health with statistical rigor.
+              This dashboard shows 30 days of metrics with automated degradation detection using z-scores
+              and confidence intervals. Know exactly when to retrain based on statistics, not guesswork.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->

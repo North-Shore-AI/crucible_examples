@@ -84,11 +84,19 @@ defmodule CrucibleExamplesWeb.StatsLive do
             ← Back to Examples
           </.link>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Statistical Comparison Lab
+            📊 Statistical Comparison Lab
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             A/B test two models with proper statistical rigor: t-tests, effect sizes, and confidence intervals
           </p>
+          <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Compare two models scientifically using proper statistical methods.
+              This demo shows t-tests, effect sizes (Cohen's d), and 95% confidence intervals - the same rigor
+              used in academic research. Make model selection decisions with statistical confidence, not gut feel.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->

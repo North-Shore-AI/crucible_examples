@@ -83,11 +83,19 @@ defmodule CrucibleExamplesWeb.TraceLive do
             ← Back to Examples
           </.link>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Causal Trace Explorer
+            🔍 Causal Trace Explorer
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             Interactive timeline of LLM reasoning with decision transparency and uncertainty tracking
           </p>
+          <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Explore the internal reasoning process of an LLM solving a complex problem.
+              See every decision point, alternatives considered, and confidence levels throughout the reasoning chain.
+              Essential for auditing, debugging, and understanding LLM decision-making.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->

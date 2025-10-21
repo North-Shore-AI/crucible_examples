@@ -84,9 +84,17 @@ defmodule CrucibleExamplesWeb.EnsembleLive do
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
             🎯 Ensemble Reliability Dashboard
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             Medical diagnosis assistant: Watch 5 models vote on high-stakes decisions
           </p>
+          <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Ensemble voting combines multiple models to achieve higher reliability (96-99%)
+              compared to single models (89-92%). This is crucial for high-stakes decisions like medical diagnosis where
+              errors can be costly. Watch how 5 different models analyze the same question and vote together.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->
@@ -225,25 +233,47 @@ defmodule CrucibleExamplesWeb.EnsembleLive do
           <%= for {model_id, response_result} <- @result.model_responses do %>
             <%= case response_result do %>
               <% {:ok, response} -> %>
-                <div class={"p-4 rounded-lg border-2 #{if response.answer == @result.vote_result.final_answer, do: "border-indigo-500 bg-indigo-50", else: "border-gray-200 bg-white"}"}>
-                  <div class="flex items-center justify-between mb-2">
-                    <h4 class="font-bold text-gray-900">{response.model_name}</h4>
-                    <span class={"px-2 py-1 text-xs rounded #{if response.answer == @result.question.correct_answer, do: "bg-green-100 text-green-800", else: "bg-gray-100 text-gray-600"}"}>
+                <div class={"p-4 rounded-lg border-2 transition-all duration-300 hover:shadow-lg #{if response.answer == @result.vote_result.final_answer, do: "border-indigo-500 bg-indigo-50 shadow-md", else: "border-gray-200 bg-white hover:border-gray-300"}"}>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></div>
+                      <h4 class="font-bold text-gray-900">{response.model_name}</h4>
+                    </div>
+                    <span class={"px-2 py-1 text-xs font-semibold rounded #{if response.answer == @result.question.correct_answer, do: "bg-green-100 text-green-800", else: "bg-gray-100 text-gray-600"}"}>
                       {if response.answer == @result.question.correct_answer,
-                        do: "Correct",
-                        else: "Wrong"}
+                        do: "✓ Correct",
+                        else: "✗ Wrong"}
                     </span>
                   </div>
-                  <p class="text-sm text-gray-700 mb-2">
-                    <strong>Answer:</strong> {response.answer}
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-600">
-                    <span>Confidence: {Float.round(response.confidence * 100, 1)}%</span>
-                    <span>{response.latency_ms}ms</span>
+                  <div class="mb-3 p-2 bg-gray-50 rounded">
+                    <p class="text-xs text-gray-500 mb-1">Answer:</p>
+                    <p class="text-sm font-semibold text-gray-900">{response.answer}</p>
                   </div>
-                  <p class="text-xs text-gray-500 mt-1">
-                    Cost: ${response.cost_usd}
-                  </p>
+                  <div class="space-y-1">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-gray-600">Confidence:</span>
+                      <div class="flex items-center gap-2">
+                        <div class="w-24 bg-gray-200 rounded-full h-2">
+                          <div
+                            class="bg-indigo-600 h-2 rounded-full"
+                            style={"width: #{response.confidence * 100}%"}
+                          >
+                          </div>
+                        </div>
+                        <span class="font-mono text-gray-900">
+                          {Float.round(response.confidence * 100, 1)}%
+                        </span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-gray-600">
+                      <span>Latency:</span>
+                      <span class="font-mono">{response.latency_ms}ms</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-gray-600">
+                      <span>Cost:</span>
+                      <span class="font-mono">${response.cost_usd}</span>
+                    </div>
+                  </div>
                 </div>
               <% {:error, error} -> %>
                 <div class="p-4 rounded-lg border-2 border-red-200 bg-red-50">
@@ -258,21 +288,45 @@ defmodule CrucibleExamplesWeb.EnsembleLive do
     <!-- Voting Analysis -->
       <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-2xl font-bold text-gray-900 mb-4">Voting Analysis</h3>
+        
+    <!-- Strategy Explanation -->
+        <div class="mb-4 p-3 bg-amber-50 border-l-4 border-amber-500 rounded">
+          <p class="text-sm text-gray-700">
+            <strong>Strategy: {String.capitalize(to_string(@result.voting_strategy))}</strong>
+            - {strategy_explanation(@result.voting_strategy)}
+          </p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 class="font-semibold text-gray-700 mb-2">Strategy: {@result.voting_strategy}</h4>
+            <h4 class="font-semibold text-gray-700 mb-3">Vote Distribution</h4>
             <%= if Map.has_key?(@result.vote_result, :vote_distribution) do %>
-              <div class="space-y-2">
+              <div class="space-y-3">
                 <%= for {answer, count} <- @result.vote_result.vote_distribution do %>
-                  <div class="flex items-center">
-                    <div class="w-32 text-sm text-gray-700">{answer}</div>
-                    <div class="flex-1 bg-gray-200 rounded-full h-6">
-                      <div
-                        class={"h-6 rounded-full flex items-center justify-end pr-2 text-white text-xs font-bold #{if answer == @result.vote_result.final_answer, do: "bg-indigo-600", else: "bg-gray-400"}"}
-                        style={"width: #{count / map_size(@result.vote_result.vote_distribution) * 100}%"}
-                      >
-                        {count}
+                  <div class="space-y-1">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-gray-600 font-medium truncate max-w-[150px]" title={answer}>
+                        {answer}
+                      </span>
+                      <span class="text-gray-500">{count} vote(s)</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div class="flex-1 bg-gray-200 rounded-full h-8 overflow-hidden">
+                        <div
+                          class={"h-8 rounded-full flex items-center justify-center text-white text-xs font-bold transition-all duration-500 #{if answer == @result.vote_result.final_answer, do: "bg-gradient-to-r from-indigo-500 to-indigo-600", else: "bg-gray-400"}"}
+                          style={"width: #{count / map_size(@result.vote_result.vote_distribution) * 100}%"}
+                        >
+                          <%= if count / map_size(@result.vote_result.vote_distribution) > 0.15 do %>
+                            {Float.round(
+                              count / map_size(@result.vote_result.vote_distribution) * 100,
+                              0
+                            )}%
+                          <% end %>
+                        </div>
                       </div>
+                      <%= if answer == @result.vote_result.final_answer do %>
+                        <span class="text-indigo-600 font-bold">🏆</span>
+                      <% end %>
                     </div>
                   </div>
                 <% end %>
@@ -370,4 +424,18 @@ defmodule CrucibleExamplesWeb.EnsembleLive do
     </div>
     """
   end
+
+  # Helper function for strategy explanations
+  defp strategy_explanation(:majority),
+    do: "The most common answer across all models wins. Simple and effective."
+
+  defp strategy_explanation(:weighted),
+    do:
+      "Each vote is weighted by the model's confidence score. Higher confidence votes count more."
+
+  defp strategy_explanation(:unanimous),
+    do: "All models must agree. If not unanimous, falls back to majority vote."
+
+  defp strategy_explanation(:best_confidence),
+    do: "The answer from the single most confident model wins. Fastest but least reliable."
 end

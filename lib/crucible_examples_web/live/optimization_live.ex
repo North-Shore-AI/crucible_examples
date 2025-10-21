@@ -67,11 +67,19 @@ defmodule CrucibleExamplesWeb.OptimizationLive do
             ← Back to Examples
           </.link>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Optimization Playground
+            🎛️ Optimization Playground
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             Systematic parameter search: Find optimal prompt configurations automatically
           </p>
+          <div class="bg-pink-50 border-l-4 border-pink-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Stop guessing prompt parameters! Use systematic optimization
+              to find the best configuration. Watch Bayesian optimization converge to optimal temperature,
+              token limits, and few-shot examples. See which parameters matter most through heatmap analysis.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->

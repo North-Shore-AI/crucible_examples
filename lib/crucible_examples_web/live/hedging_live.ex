@@ -133,11 +133,19 @@ defmodule CrucibleExamplesWeb.HedgingLive do
             ← Back to Examples
           </.link>
           <h1 class="text-4xl font-bold text-gray-900 mb-2">
-            Request Hedging Simulator
+            ⚡ Request Hedging Simulator
           </h1>
-          <p class="text-lg text-gray-600">
+          <p class="text-lg text-gray-600 mb-3">
             Customer support chatbot: Reduce tail latency by sending backup requests
           </p>
+          <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
+            <p class="text-sm text-gray-700">
+              <strong>What you'll see:</strong>
+              Request hedging reduces tail latency (P99) by 50-75% with minimal cost overhead.
+              When a request takes too long, we send a backup "hedge" request. Whichever completes first wins.
+              This dramatically improves worst-case user experience with only 5-15% cost increase.
+            </p>
+          </div>
         </div>
         
     <!-- Configuration Panel -->
