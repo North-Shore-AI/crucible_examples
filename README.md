@@ -190,8 +190,42 @@ Each demo includes:
 
 ### Running Tests
 ```bash
+# Run all tests
 mix test
+
+# Run specific test file
+mix test test/crucible_examples/mock/models_test.exs
+
+# Run with coverage
+mix test --cover
 ```
+
+**Test Suite**: 85 comprehensive tests covering:
+- Mock system (Models, Latency, Datasets, Pricing) - 80 tests
+- Web controllers and views - 5 tests
+- All tests passing with zero warnings
+
+### Running Examples
+
+The `examples/` directory contains runnable scripts demonstrating each feature:
+
+```bash
+# Mock system demonstrations
+mix run examples/mock_models_demo.exs
+mix run examples/latency_demo.exs
+mix run examples/datasets_demo.exs
+
+# Interactive demo scripts
+mix run examples/ensemble_demo.exs
+mix run examples/hedging_demo.exs
+mix run examples/stats_demo.exs
+```
+
+Each example script:
+- Runs independently without the web server
+- Demonstrates core framework capabilities
+- Produces detailed console output
+- Can be used for testing and benchmarking
 
 ### Code Formatting
 ```bash

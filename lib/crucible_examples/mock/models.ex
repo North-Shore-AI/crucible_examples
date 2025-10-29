@@ -139,7 +139,9 @@ defmodule CrucibleExamples.Mock.Models do
   defp generate_answer(model, _question, correct_answer, opts) do
     # Use deterministic seed if provided
     if opts[:deterministic] do
-      :rand.seed(:exsplus, {model.id, opts[:seed], 42})
+      # Convert atom to integer for seed
+      model_hash = :erlang.phash2(model.id)
+      :rand.seed(:exsplus, {model_hash, opts[:seed] || 0, 42})
     end
 
     # Model answers correctly based on its accuracy profile
