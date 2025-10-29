@@ -1,5 +1,9 @@
 # Crucible Examples
 
+[![Elixir](https://img.shields.io/badge/elixir-1.15+-purple.svg)](https://elixir-lang.org)
+[![Phoenix](https://img.shields.io/badge/phoenix-1.8+-orange.svg)](https://phoenixframework.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/North-Shore-AI/crucible_examples/blob/master/LICENSE)
+
 **Interactive Phoenix LiveView demonstrations of the Crucible Framework**
 
 This project showcases the Crucible Framework's components through **mock LLM scenarios with real framework orchestration**. Experience ensemble voting, request hedging, statistical analysis, causal tracing, and production monitoring through beautiful, real-time visualizations.
