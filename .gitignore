@@ -35,3 +35,5 @@ crucible_examples-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+repomix*.xml
