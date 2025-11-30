@@ -16,3 +16,6 @@ config :phoenix, :plug_init_mode, :runtime
 # Enable helpful, but potentially expensive runtime checks
 config :phoenix_live_view,
   enable_expensive_runtime_checks: true
+
+# Disable CrucibleFramework.Repo since this app doesn't use the database
+config :crucible_framework, :enable_repo, false
